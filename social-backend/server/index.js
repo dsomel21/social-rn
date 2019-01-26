@@ -1,9 +1,9 @@
 import express from 'express';
 import dbConfig from './config/db';
 import middlewareConfig from './config/middleware';
+import { SocialRoutes } from './modules'
 
 const app = express();
-
 /* 
   Database Config
 */
@@ -13,6 +13,8 @@ dbConfig();
   Use Middleware
 */
 middlewareConfig(app);
+
+app.use('/api', SocialRoutes)
 
 const PORT = process.env.PORT || 3000;
 
