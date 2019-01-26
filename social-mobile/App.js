@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 
 import { fetchSocials } from './constants/api'
 
-export default class App extends React.Component {
+export default class App extends Component {
   static defaultProps = {
     fetchSocials
   }
@@ -15,8 +15,12 @@ export default class App extends React.Component {
 
   async componentDidMount () {
     this.setState({ loading: true })
-    const data = await this.props.fetchSocials()
-    this.setState({ loading: false, socials: data.socials })
+    const data = await this.props.fetchSocials();
+    console.log('----------', data)
+    console.log(data)
+    this.setState({ 
+      loading: false, socials: data.socials
+    })
   }
 
   render() {
@@ -30,10 +34,6 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Social</Text>
-
-        {this.state.socials.map((social, i) => (
-          <Text key={i}>{social.title}</Text>
-        ))}
       </View>
     );
   }
