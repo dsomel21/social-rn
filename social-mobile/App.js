@@ -16,10 +16,9 @@ export default class App extends Component {
   async componentDidMount () {
     this.setState({ loading: true })
     const data = await this.props.fetchSocials();
-    console.log('----------', data)
-    console.log(data)
-    this.setState({ 
-      loading: false, socials: data.socials
+    this.setState({
+      loading: false,
+      socials: data.social
     })
   }
 
