@@ -32,7 +32,10 @@ export default class App extends Component {
     }
     return (
       <View style={styles.container}>
-        <Text>Social</Text>
+        <Text>Socialxx</Text>
+        {this.state.socials.map(social => {
+          <Text>{social.title}</Text>
+        })}
       </View>
     );
   }
