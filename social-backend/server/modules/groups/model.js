@@ -20,7 +20,7 @@ const GroupSchema = new Schema({
   },
   meetups: [{
     type: Schema.Types.ObjectId,
-    ref: 'Meetup',
+    ref: 'Social',
   }],
 }, { timestamps: true });
 

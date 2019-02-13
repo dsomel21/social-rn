@@ -1,6 +1,9 @@
 import Group from './model';
 
 export const createGroup = async (req, res) => {
+  console.log('-----------------');
+  console.log(req.body);
+
   const { name, description, category } = req.body;
 
   if (!name) {
@@ -25,6 +28,9 @@ export const createGroup = async (req, res) => {
       group: await group.save(),
     });
   } catch (e) {
-    return res.status(400).json();
+    return res.status(400).json({
+      error: true,
+      message: 'Error while saving the group',
+    });
   }
 };
