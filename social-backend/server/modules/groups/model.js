@@ -18,10 +18,20 @@ const GroupSchema = new Schema({
   category: {
     type: String,
   },
-  meetups: [{
+  socials: [{
     type: Schema.Types.ObjectId,
     ref: 'Social',
   }],
 }, { timestamps: true });
+
+GroupSchema.statics.addSocial = async function (id, args) {
+  const Social = mongoose.model('Social');
+  console.log(id, args);
+
+  // const group = await this.findById(id);
+
+  // Copy everything from args
+  // const social = await new Social({ ...args, group });
+};
 
 export default mongoose.model('Group', GroupSchema);

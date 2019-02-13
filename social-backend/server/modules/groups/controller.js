@@ -34,3 +34,39 @@ export const createGroup = async (req, res) => {
     });
   }
 };
+
+export const createGroupSocial = async (req, res) => {
+  const { title, description } = req.body;
+  const { groupId } = req.params;
+
+  if (!title) {
+    return res.status(400).json({ error: true, message: 'Title must be provided' });
+  }
+  if (title.length < 5) {
+    return res.status(400).json({ error: true, message: 'Title must have at least 6 characters' });
+  }
+
+  if (!description) {
+    return res.status(400).json({ error: true, message: 'Description must be provided' });
+  }
+  if (description.length < 10) {
+    return res.status(400).json({ error: true, message: 'Description must have at least 10 characters' });
+  }
+
+  if (!groupId) {
+    return res.status(400).json({
+      error: true,
+      message: 'groupId must be provided',
+    });
+  }
+
+  try {
+    // This is going to his the groups/model.js addSocial() function as the (args) parameter
+    Group.addSocial(groupId, { title, description });
+  } catch (e) {
+    return res.status(400).json({
+      error: true,
+      message: 'Social cannot becreated!',
+    });
+  }
+};

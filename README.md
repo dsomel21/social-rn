@@ -9,7 +9,7 @@ As of right now, the folder structure is divided into 2 main sections, `social-b
 
 Here is a step by step example of how to get a development env running:
 
-For the **server** and API:
+###### For the **server** and API:
 ```
 cd social-backend
 nodemon dev
@@ -17,7 +17,7 @@ nodemon dev
 And the server will be running at `localhost:3000`
 
 
-To launch the **frontend**, run:
+###### To launch the **frontend**, run:
 
 ```
 cd social-mobile
@@ -29,6 +29,21 @@ After you do this, since we are using Expo (for now at least), you should see a 
 
 
 I usually just send it to my email an open it in the Expo app! I am still playing around with this, I want something that is a bit more convenient, but it is nice to quickly get a true native feeling via iPhone.
+
+###### Viewing Data:
+In your CLI:
+```
+mongo
+...
+...
+MongoDB shell version: 2.X.X
+connecting to: test
+> use social
+switched to db social
+> db.groups.find();
+{ "_id" : ObjectId("5c6380e2100c8b273df01f6c"), "socials" : [ ], "name" : "Kanye West Group", "description" : "All Fans of Mr. West", "createdAt" : ISODate("2019-02-13T02:28:50.288Z"), "updatedAt" : ISODate("2019-02-13T02:28:50.288Z"), "__v" : 0 }
+
+```
 
 ## Known Issues
 For some reason, on the React side... when I wanted to update some state by fetching some data from my API, **the following does NOT work**.
