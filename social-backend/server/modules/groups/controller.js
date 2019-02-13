@@ -20,7 +20,7 @@ export const createGroup = async (req, res) => {
     return res.status(400).json({ error: true, message: 'description must have at least 10 characters' });
   }
 
-  const group = new Group({ title, description });
+  const group = new Group({ name, description });
 
   try {
     return res.status(201).json({
