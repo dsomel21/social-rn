@@ -26,12 +26,14 @@ const GroupSchema = new Schema({
 
 GroupSchema.statics.addSocial = async function (id, args) {
   const Social = mongoose.model('Social');
-  console.log(id, args);
 
-  // const group = await this.findById(id);
+  const group = await this.findById(id);
+  console.log(group);
 
   // Copy everything from args
-  // const social = await new Social({ ...args, group });
+  const social = await new Social({ ...args, group });
+
+  group.socials.push(social);
 };
 
 export default mongoose.model('Group', GroupSchema);
