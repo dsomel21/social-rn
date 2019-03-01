@@ -62,7 +62,8 @@ export const createGroupSocial = async (req, res) => {
 
   try {
     // This is going to his the groups/model.js addSocial() function as the (args) parameter
-    Group.addSocial(groupId, { title, description });
+    const [meetup, group] = await Group.addSocial(groupId, { title, description });
+    console.log([meetup, group]);
   } catch (e) {
     return res.status(400).json({
       error: true,

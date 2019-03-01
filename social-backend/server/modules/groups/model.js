@@ -34,6 +34,10 @@ GroupSchema.statics.addSocial = async function (id, args) {
   const social = await new Social({ ...args, group });
 
   group.socials.push(social);
+
+  const result = await Promise.all(social.save());
+
+  return result;
 };
 
 export default mongoose.model('Group', GroupSchema);
